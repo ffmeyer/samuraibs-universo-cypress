@@ -26,8 +26,8 @@ describe('Cadastro', function () {
             signupPage.go()
             signupPage.form(user)
             signupPage.submit()
-            signupPage.toasterHaveText('Agora você se tornou um(a) Samurai, faça seu login para ver seus agendamentos!')
-
+            signupPage.toast.shouldHaveTest('Agora você se tornou um(a) Samurai, faça seu login para ver seus agendamentos!')
+            
 
             /*cy.wait(1000)
             cy.get('body')*/
@@ -74,7 +74,7 @@ describe('Cadastro', function () {
             signupPage.go()
             signupPage.form(user)
             signupPage.submit()
-            signupPage.toasterHaveText('Email já cadastrado para outro usuário.')
+            signupPage.toast.shouldHaveTest('Email já cadastrado para outro usuário.')
         })
 
     })
