@@ -30,7 +30,7 @@ class LoginPage {
     }
 
     submit(){
-        cy.contains(el.loginButton).click()
+        cy.contains(el.signIn).click()
     }
     
     alertHaveText(expectText) {
