@@ -10,7 +10,8 @@ describe('Cadastro', function () {
         const user = {
             name: 'Felipe Meyer',
             email: 'felipe@samuraibs.com',
-            password: 'pwd123'
+            password: 'pwd123',
+            is_provider: true
         }
 
         before(function () {
@@ -20,14 +21,13 @@ describe('Cadastro', function () {
                 })
         })
 
-        it('deve cadastrar com sucesso', function () {
+        it.only('deve cadastrar com sucesso', function () {
 
             signupPage.go()
             signupPage.form(user)
             signupPage.submit()
             signupPage.toast.shouldHaveText('Agora você se tornou um(a) Samurai, faça seu login para ver seus agendamentos!')
             
-
             /*cy.wait(1000)
             cy.get('body')*/
 
@@ -53,20 +53,7 @@ describe('Cadastro', function () {
         }
 
         before(function () {
-
-            cy.task('removeUser', user.email)
-                .then(function (result) {
-                    console.log(result)
-                })
-
-            cy.request(
-                'POST',
-                'http://localhost:3333/users',
-                user
-            ).then(function (response) {
-                expect(response.status).to.eq(200)
-            })
-
+            cy.postUser(user)
         })
 
         it('Nao deve cadastrar o usuario', function () {
