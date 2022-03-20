@@ -9,7 +9,7 @@ class SignupPage {
         this.toast = toast
     }
     
-     go() {
+    go() {
         cy.visit('/signup')
     }
 

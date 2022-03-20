@@ -22,12 +22,10 @@ module.exports = (on, config) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
 
-const configJson = require(config.configFile)  
+  const configJson = require(config.configFile)
+  const pool = new Pool(configJson.db_config)
   
   
-  const pool = new Pool (configJson.db_config)
-
-
   on('task', {
     removeUser(email) {
       return new Promise(function (resolve) {

@@ -6,9 +6,14 @@
   "author": "Felipe Meyer",
   "license": "MIT",
   "devDependencies": {
+    "@cypress/webpack-preprocessor": "^5.11.1",
     "@faker-js/faker": "^6.0.0-alpha.7",
     "cypress": "9.5.1",
-    "pg": "^8.7.3"
+    "pg": "^8.7.3",
+    "ts-loader": "^9.2.8",
+    "webpack": "^5.70.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "bcryptjs": "^2.4.3"
+  }
 }
