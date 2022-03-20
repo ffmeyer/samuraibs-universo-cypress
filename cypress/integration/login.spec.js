@@ -4,7 +4,7 @@ import dashPage from '../support/pages/dash'
 
 describe('Acesso a aplicacao Samuraibs', function () {
 
-    context.only('Login com sucesso', function () {
+    context('Login com sucesso', function () {
 
         const user = {
             name: 'Felipe Meyer',
@@ -33,7 +33,7 @@ describe('Acesso a aplicacao Samuraibs', function () {
             loginPage.go()
             loginPage.typeLoginData(user)
             loginPage.submit()
-            dashPage.validateUserLoggedIn(user.name)
+            dashPage.header.validateUserLoggedIn(user.name)
         })
     })
 
@@ -49,7 +49,7 @@ describe('Acesso a aplicacao Samuraibs', function () {
             loginPage.go()
             loginPage.typeLoginData(user)
             loginPage.submit()
-            dashPage.toast.shouldHaveText('Ocorreu um erro ao fazer login, verifique suas credenciais.')
+            loginPage.toast.shouldHaveText('Ocorreu um erro ao fazer login, verifique suas credenciais.')
         })
 
         it('Incorrect email', function () {
@@ -77,7 +77,7 @@ describe('Acesso a aplicacao Samuraibs', function () {
             loginPage.go()
             loginPage.typeLoginData(user)
             loginPage.submit()
-            dashPage.toast.shouldHaveText('Ocorreu um erro ao fazer login, verifique suas credenciais.')
+            loginPage.toast.shouldHaveText('Ocorreu um erro ao fazer login, verifique suas credenciais.')
         })
 
         it('Email required', function () {
@@ -106,7 +106,7 @@ describe('Acesso a aplicacao Samuraibs', function () {
             loginPage.alertHaveText('Senha é obrigatória')
         })
 
-        it('email and password required', function () {
+        it('Email and Pcassword required', function () {
             let user = {
                 name: 'Felipe Meyer',
                 email: '',

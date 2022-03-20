@@ -1,16 +1,10 @@
 
-import toast from '../components/toast'
+import header from '../../components/header'
 
 class DashPage {
     
     constructor() {
-        this.toast = toast
-    }
-        
-    validateUserLoggedIn(expectText){        
-        cy.get('header a strong', {timeout: 7000})
-            .should('be.visible')
-            .should('have.text', expectText)
+        this.header = header
     }
 }
 
