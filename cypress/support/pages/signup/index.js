@@ -24,7 +24,7 @@ class SignupPage {
     }
     
     alertHaveText(expectText) {
-        cy.contains('.alert-error', expectText)
+        cy.contains(el.alertError, expectText)
             .should('be.visible')                
     }
     

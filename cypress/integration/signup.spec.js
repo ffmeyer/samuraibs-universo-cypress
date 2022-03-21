@@ -80,7 +80,7 @@ describe('Cadastro', function () {
         })
     })
 
-    context('quando a senha é muito curta]', function () {
+    context('quando a senha é muito curta', function () {
 
         const passwords = ['1', '2a', 'ab3', 'abc4', 'ab#c5']
 

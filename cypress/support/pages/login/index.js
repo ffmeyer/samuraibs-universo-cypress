@@ -19,13 +19,17 @@ class LoginPage {
 
     typeUser(user) {    
         if (user.email !== "") {
-            cy.get(el.email).type(user.email)       
+            cy.get(el.email)
+                .clear()
+                .type(user.email)       
         }
     }
 
     typePass(user) {        
         if (user.password !== "") {
-            cy.get(el.password).type(user.password)
+            cy.get(el.password)
+            .clear()
+            .type(user.password)
         }
     }
 
@@ -34,7 +38,7 @@ class LoginPage {
     }
     
     alertHaveText(expectText) {
-        cy.contains('.alert-error', expectText)
+        cy.contains(el.alerterror, expectText)
             .should('be.visible')                
     }
 }
