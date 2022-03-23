@@ -1,10 +1,11 @@
 
+import { result } from 'cypress/types/lodash'
 import fpPage from '../support/pages/forgotpass'
 
 
 describe('Resgate de senha', function () {
 
-    before(function() {
+    before(function () {
         cy.fixture('recovery').then(function (recovery) {
             this.data = recovery
         })
@@ -22,6 +23,21 @@ describe('Resgate de senha', function () {
             fpPage.submit()
             const message = 'Enviamos um e-mail para confirmar a recuperação de senha, cheque sua caixa de entrada.'
             fpPage.toast.shouldHaveText(message)
+        })
+    })
+
+    context('Quando o usuario solicita o resgate', function () {
+
+        before(function () {
+            cy.postUser(this.data)
+            cy.recoveryPass(this.data.email)
+        })
+
+        it('deve poder cadastrar uma nova senha', function () {
+            cy.task('findToken', this.data.email)
+                .then(function (result) {
+                    console.log(result)
+                })
         })
     })
 })

@@ -12,6 +12,7 @@
 // This function is called when a project is opened or re-opened (e.g. due to
 // the project's config changing)
 
+
 const { Pool } = require('pg')
 
 /**
@@ -24,9 +25,10 @@ module.exports = (on, config) => {
 
   const configJson = require(config.configFile)
   const pool = new Pool(configJson.db_config)
-  
-  
+
+
   on('task', {
+
     removeUser(email) {
       return new Promise(function (resolve) {
         pool.query('DELETE FROM public.users WHERE email = $1', [email], function (error, result) {
@@ -36,6 +38,7 @@ module.exports = (on, config) => {
           resolve({ sucess: result })
         })
       })
+    }
     }
   })
 }
