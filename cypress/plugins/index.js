@@ -50,7 +50,7 @@ module.exports = (on, config) => {
             if (error) {
               throw (error)
             }
-            resolve({ sucess: result.rows[0].token })
+            resolve({ token: result.rows[0].token })
           })
       })
     }
