@@ -21,7 +21,7 @@ describe('Cadastro', function () {
                 })
         })
 
-        it.only('deve cadastrar com sucesso', function () {
+        it('deve cadastrar com sucesso', function () {
 
             signupPage.go()
             signupPage.form(user)
@@ -77,7 +77,7 @@ describe('Cadastro', function () {
             signupPage.go()
             signupPage.form(user)
             signupPage.submit()
-            signupPage.alertHaveText('Informe um email válido')
+            signupPage.alert.haveText('Informe um email válido')
         })
     })
 
@@ -103,7 +103,7 @@ describe('Cadastro', function () {
         })
 
         afterEach(function () {
-            signupPage.alertHaveText('Pelo menos 6 caracteres')
+            signupPage.alert.haveText('Pelo menos 6 caracteres')
         })
 
     })
@@ -122,7 +122,7 @@ describe('Cadastro', function () {
 
         alertMessages.forEach(function(alert){
             it('deve exibir ' + alert.toLowerCase(), function() {
-                signupPage.alertHaveText(alert)
+                signupPage.alert.haveText(alert)
             })
         })
     })

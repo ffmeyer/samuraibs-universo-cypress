@@ -71,7 +71,7 @@ describe('Acesso a aplicacao Samuraibs', function () {
             loginPage.go()
             loginPage.typeLoginData(user)
             loginPage.submit()
-            loginPage.alertHaveText('E-mail é obrigatório')
+            loginPage.alert.haveText('E-mail é obrigatório')
         })
 
         it('Password required', function () {
@@ -84,7 +84,7 @@ describe('Acesso a aplicacao Samuraibs', function () {
             loginPage.go()
             loginPage.typeLoginData(user)
             loginPage.submit()
-            loginPage.alertHaveText('Senha é obrigatória')
+            loginPage.alert.haveText('Senha é obrigatória')
         })
 
         it('Email and Pcassword required', function () {
@@ -97,8 +97,8 @@ describe('Acesso a aplicacao Samuraibs', function () {
             loginPage.go()
             loginPage.typeLoginData(user)
             loginPage.submit()
-            loginPage.alertHaveText('Senha é obrigatória')
-            loginPage.alertHaveText('E-mail é obrigatório')
+            loginPage.alert.haveText('Senha é obrigatória')
+            loginPage.alert.haveText('E-mail é obrigatório')
         })
     })
 
@@ -124,12 +124,12 @@ describe('Acesso a aplicacao Samuraibs', function () {
                 let user = { email: email, password: 'pwd123' }
                 loginPage.typeLoginData(user)
                 loginPage.submit()
-                loginPage.alertHaveText('Informe um email válido')
+                loginPage.alert.haveText('Informe um email válido')
             })
         })
     })
 
-    context.only('quando nao preencho nenhum dos campos', function() {
+    context('quando nao preencho nenhum dos campos', function() {
         const alertMessages = [
         'E-mail é obrigatório',
         'Senha é obrigatória'
@@ -142,9 +142,8 @@ describe('Acesso a aplicacao Samuraibs', function () {
 
         alertMessages.forEach(function(alert){
             it('deve exibir' + alert.toLowerCase(), function() {
-                loginPage.alertHaveText(alert)
+                loginPage.alert.haveText(alert)
             })
         })
     })
-
 })
