@@ -27,7 +27,8 @@ describe('Cadastro', function () {
             signupPage.form(user)
             signupPage.submit()
             signupPage.toast.shouldHaveText('Agora você se tornou um(a) Samurai, faça seu login para ver seus agendamentos!')
-            
+
+
             /*cy.wait(1000)
             cy.get('body')*/
 
@@ -35,10 +36,10 @@ describe('Cadastro', function () {
             cy.intercept('POST','/users', {
                 statuscode:  200
             }).as ('postuser')
-    
+
             é necessario a ação de clicar normalmente.
             cy.contains('button','Cadastrar').click()
-    
+
             cypress 'intercepta' o response da api, e passa o mock status code 200
             cy.wait('@postuser')*/
         })
@@ -107,4 +108,22 @@ describe('Cadastro', function () {
 
     })
 
+    context('quando nao preencho nenhum dos campos', function() {
+        const alertMessages = [
+        'Nome é obrigatório',
+        'E-mail é obrigatório',
+        'Senha é obrigatória'
+        ]
+
+        before(function(){
+            signupPage.go()
+            signupPage.submit()
+        })
+
+        alertMessages.forEach(function(alert){
+            it('deve exibir ' + alert.toLowerCase(), function() {
+                signupPage.alertHaveText(alert)
+            })
+        })
+    })
 })

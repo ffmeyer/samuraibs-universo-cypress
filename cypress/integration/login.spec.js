@@ -119,7 +119,7 @@ describe('Acesso a aplicacao Samuraibs', function () {
     })
 
     emails.forEach(function (email) {
-        context.only('Quando o formato do email é invalido', function () {
+        context('Quando o formato do email é invalido', function () {
             it('Não deve logar com o email: ' + email, function () {
                 let user = { email: email, password: 'pwd123' }
                 loginPage.typeLoginData(user)
@@ -128,5 +128,23 @@ describe('Acesso a aplicacao Samuraibs', function () {
             })
         })
     })
+
+    context.only('quando nao preencho nenhum dos campos', function() {
+        const alertMessages = [
+        'E-mail é obrigatório',
+        'Senha é obrigatória'
+        ]
+
+        before(function(){
+            loginPage.go()
+            loginPage.submit()
+        })
+
+        alertMessages.forEach(function(alert){
+            it('deve exibir' + alert.toLowerCase(), function() {
+                loginPage.alertHaveText(alert)
+            })
+        })
+    })
+
 })
-  
