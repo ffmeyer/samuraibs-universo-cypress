@@ -38,7 +38,21 @@ module.exports = (on, config) => {
           resolve({ sucess: result })
         })
       })
-    }
+    },
+
+    findToken(email) {
+      return new Promise(function (resolve) {
+        pool.query('SELECT ut.token FROM public.user_tokens ut, ' +
+          'public.users u ' +
+          'WHERE u.id = ut.user_id ' +
+          'AND u.email = $1 ' +
+          'ORDER BY ut.created_at', [email], function (error, result) {
+            if (error) {
+              throw (error)
+            }
+            resolve({ sucess: result.rows[0].token })
+          })
+      })
     }
   })
 }

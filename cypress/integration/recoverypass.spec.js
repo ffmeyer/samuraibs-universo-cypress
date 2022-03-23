@@ -1,6 +1,6 @@
 
-import { result } from 'cypress/types/lodash'
 import fpPage from '../support/pages/forgotpass'
+import rpPage from '../support/pages/resetpass'
 
 
 describe('Resgate de senha', function () {
@@ -26,7 +26,7 @@ describe('Resgate de senha', function () {
         })
     })
 
-    context('Quando o usuario solicita o resgate', function () {
+    context.only('Quando o usuario solicita o resgate', function () {
 
         before(function () {
             cy.postUser(this.data)
@@ -34,10 +34,8 @@ describe('Resgate de senha', function () {
         })
 
         it('deve poder cadastrar uma nova senha', function () {
-            cy.task('findToken', this.data.email)
-                .then(function (result) {
-                    console.log(result)
-                })
+            const token = Cypress.env('recoveryToken')
+            rpPage.go(token)
         })
     })
 })
