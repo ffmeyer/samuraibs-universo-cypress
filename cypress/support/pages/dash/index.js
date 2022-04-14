@@ -9,21 +9,83 @@ class DashPage {
         this.header = header
     }
 
-    calendarShouldBeVisible(){
-        cy.get('.DayPicker', {timeout:7000})
+    calendarShouldBeVisible() {
+        cy.get(el.calendar, { timeout: 7000 })
             .should('be.visible')
     }
-    selectDay(day){
-        const target = new RegExp('^' + day + '$', 'g')
-        cy.contains('.DayPicker-Day--available', target)
-            .click({force:true})
+
+    selectDay(appointmentDate) {
+
+        let today = new Date()
+        let lastDayofMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0)
+
+
+        if (today.getDate() === lastDayofMonth.getDate()) {
+            cy.get(el.nextMonthButton)
+                .should('be.visible')
+                .click()
+
+
+
+            switch (appointmentDate.getMonth()) {
+                case 0:
+                    monthName = 'Janeiro'
+                    break
+                case 1:
+                    monthName = 'Fevereiro'
+                    break
+                case 2:
+                    monthName = 'Março'
+                    break
+                case 3:
+                    monthName = 'Abril'
+                    break
+                case 4:
+                    monthName = 'Maio'
+                    break
+                case 5:
+                    monthName = 'Junho'
+                    break
+                case 6:
+                    monthName = 'Julho'
+                    break
+                case 7:
+                    monthName = 'Agosto'
+                    break
+                case 8:
+                    monthName = 'Setembro'
+                    break
+                case 9:
+                    monthName = 'Outubro'
+                    break
+                case 10:
+                    monthName = 'Novembro'
+                    break
+                case 11:
+                    monthName = 'Dezembro'
+                    break
+
+            }
+
+            cy.contains(el.nextMonthButton, monthName)
+                .should('be.visible')
+
+        } else {
+            cy.log('nao eh o ultimo dia do mes')
+        }
+
+
+
+        const target = new RegExp('^' + appointmentDate.getDate() + '$', 'g')
+        cy.contains(el.boxDay, target)
+            .click({ force: true })
     }
 
-    appointmentShouldBeVisible (customer, hour) {
+    appointmentShouldBeVisible(customer, hour) {
         cy.contains('div', customer.name)
             .should('be.visible')
             .parent()
-            .contains('span[class="appointment"]', hour, { timeout: 7000 })
+            .contains(el.boxHour, hour, { timeout: 7000 })
             .should('be.visible')
     }
 
