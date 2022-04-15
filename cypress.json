@@ -3,6 +3,7 @@
     "apiServer": "http://localhost:3333",
     "viewportWidth": 1440,
     "viewportHeight": 900,
+    "projectId": "ak42ue",
     "db_config": {
         "host": "jelani.db.elephantsql.com",
         "user": "tiathzoo",
