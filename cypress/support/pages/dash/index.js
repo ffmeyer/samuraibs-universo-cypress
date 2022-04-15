@@ -10,8 +10,12 @@ class DashPage {
     }
 
     calendarShouldBeVisible() {
+        cy.get(el.calendar)
+            .should('be.visible')
+        /*
         cy.get(el.calendar, { timeout: 7000 })
             .should('be.visible')
+        */
     }
 
     selectDay(appointmentDate) {
@@ -87,6 +91,16 @@ class DashPage {
             .parent()
             .contains(el.boxHour, hour, { timeout: 7000 })
             .should('be.visible')
+
+        /*
+        cy.contains('div', customer.name)
+            .should('be.visible')
+            .parent()
+            .contains(el.boxHour, hour)
+            .should('be.visible')
+        */
+
+
     }
 
 
