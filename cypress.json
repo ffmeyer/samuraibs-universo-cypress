@@ -4,6 +4,7 @@
     "viewportWidth": 1440,
     "viewportHeight": 900,
     "defaultCommandTimeout": 30000,
+    "projectId": "ak42ue",
     "db_config": {
         "host": "jelani.db.elephantsql.com",
         "user": "tiathzoo",
