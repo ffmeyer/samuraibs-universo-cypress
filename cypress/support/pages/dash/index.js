@@ -89,7 +89,7 @@ class DashPage {
         cy.contains('div', customer.name)
             .should('be.visible')
             .parent()
-            .contains(el.boxHour, hour, { timeout: 7000 })
+            .contains(el.boxHour, hour)
             .should('be.visible')
 
         /*
