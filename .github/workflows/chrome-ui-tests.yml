@@ -43,7 +43,7 @@ jobs:
           group: 'UI - Chrome'
           spec: ${{ github.event.inputs.specs }}
         env:
-          TZ: America/Sao_paulo
+          TZ: America/Sao_Paulo
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
